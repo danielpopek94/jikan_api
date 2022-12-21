@@ -1,0 +1,31 @@
+.App{
+  overflow: auto;
+  width: 100vw;
+}
+header{
+  background-color: rgb(30, 51, 211);
+  color: white;
+  display: flex;
+  align-items: center;
+  max-height: 80px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+header h3{
+font-size:32px;
+margin-left: 30px;
+}
+.search-box{
+  width: 100%;
+  padding: 50px;
+}
+.search-box input{
+  width: 100%;
+  font-size: 20px;
+}
+.row{
+  display: flex;
+  justify-content: center;
+}
