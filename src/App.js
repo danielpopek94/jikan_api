@@ -6,7 +6,7 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
 function App() {
 
-  const [search,setSearch] = useState('Naruto');
+  const [search,setSearch] = useState('');
   const [animeData,setAnimeData]=useState();
 
   const getData = async() => {
@@ -17,15 +17,13 @@ function App() {
 
   useEffect(()=>{
     getData()
-  },[search])
-   
-  const items = animeData;
+  },[search]);
 
-  const handleOnSearch = (string, results) => {
+  const handleOnSearch = async (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
-    console.log(string);
-    setSearch(string);
+    
+    await setSearch(string);
   }
 
   const handleOnHover = (result) => {
@@ -43,19 +41,15 @@ function App() {
   }
 
   const formatResult = (item) => {
-    console.log('chuj');
-    /*let animeTitles = new Array;
-
-    animeData.array.forEach(e => {
-      animeTitles.push(e.title);
-    })*/
-  
     return (
       <>
-        <span style={{ display: 'block', textAlign: 'left' }}>title: {item.title}</span>
+        <span key={item.name} style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
       </>
     )
   }
+
+  const items = animeData ? animeData.map((anime,index) => ({name: anime.title, id: index})) : [];
+
   console.log(animeData);
   return (
     <div className="App">
