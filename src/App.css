@@ -1,6 +1,6 @@
 .App{
   overflow: auto;
-  width: 100vw;
+  width: 100%;
 }
 header{
   background-color: rgb(30, 51, 211);
@@ -31,8 +31,14 @@ margin-left: 30px;
   margin-top: 1rem;
   margin-left: 5rem;
   margin-right: 5rem;
+  height: 100vh;
+}
+.anime-row{
+  overflow:hidden;
+  max-width: 95vw;
 }
 .card{
   max-width: 200px;
   max-height: 300px;
+  margin-right: 50px;
 }
