@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { AnimeList } from './AnimeList';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
@@ -7,11 +7,17 @@ function App() {
   const [search, setSearch] = useState('');
   const [animeData, setAnimeData] = useState([]);
 
+   // przechowaj poprzednią wartość animeData za pomocą useRef
+  const prevAnimeData = useRef();
+
   const getData = async () => {
     try {
       const res = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&sfw`);
       const resData = await res.json();
-      setAnimeData(resData.data);
+      
+      // jeśli aktualna wartość animeData jest pusta lub niezdefiniowana, ustaw domyślną wartość za pomocą poprzedniej wartości
+      setAnimeData(resData.data || prevAnimeData.current);
+      prevAnimeData.current = animeData;
     } catch (error) {
       console.error(error);
     }
@@ -26,15 +32,15 @@ function App() {
   };
 
   const handleOnHover = (result) => {
-    console.log(result);
+
   };
 
   const handleOnSelect = (item) => {
-    console.log(item);
+
   };
 
   const handleOnFocus = () => {
-    console.log('Focused');
+
   };
 
   const formatResult = (item) => {

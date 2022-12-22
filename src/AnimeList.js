@@ -7,7 +7,7 @@ export const AnimeList = ({animelist}) => {
             animelist ?(
                 animelist.map((anime,index)=>{
                     return(
-                <div key={anime.title} className="card">
+                <div key={anime.mal_id} className="card">
                     <img src={anime.images.webp.image_url}/>
                     <div className="anime-info">
                     <h4>{anime.title}</h4>
