@@ -2,7 +2,8 @@ import React from 'react'
 
 export const AnimeInfo = (props) => {
     const {title,images:{jpg:{large_image_url}},source,rank,score,popularity,members,status,rating,duration}=props.animeInfo
-  return (
+  console.log(props);
+    return (
     <>
         <div className="anime-content">
             <h3>{title}</h3><br />
