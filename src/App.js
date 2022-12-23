@@ -2,13 +2,13 @@ import './App.css';
 import { useEffect, useState, useRef } from 'react';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import { AnimeList } from './Components/AnimeList';
-import { AnimeInfo } from "./Components/AnimeInfo";
+import { AnimeInfo } from './Components/AnimeInfo';
 
 
 function App() {
   const [search, setSearch] = useState('');
   const [animeData, setAnimeData] = useState([]);
-  const [selectedAnime, setSelectedAnime] = useState({});
+  const [animeInfo, setAnimeInfo] = useState();
 
    // przechowaj poprzednią wartość animeData za pomocą useRef
   const prevAnimeData = useRef();
@@ -72,19 +72,14 @@ function App() {
       </header>
       <div className="container">
           <div className="animeInfo">
-          <AnimeInfo animeInfo={selectedAnime} />
+            {animeInfo && <AnimeInfo animeInfo={animeInfo}/>}
           </div>
           <div className="anime-row">
             <h2 className="text-heading">Anime</h2>
             <div className="row">
                 <AnimeList 
                 animelist={animeData}
-                onSelectAnime={setSelectedAnime}
-                />
-            </div>
-            <h2 className="text-heading">My List</h2>
-            <div className="row">
-                <AnimeList 
+                setAnimeInfo={setAnimeInfo}
                 />
             </div>
           </div>

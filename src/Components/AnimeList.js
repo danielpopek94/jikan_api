@@ -1,32 +1,24 @@
 import React from "react";
-import { AnimeInfo } from "./AnimeInfo";
 
-export const AnimeList = ({animelist}) => {
-
-    const [selectedAnime, setSelectedAnime] = React.useState(null);
-
-    const handleClick = (anime) => {
-        setSelectedAnime(anime);
-        props.onSelectAnime(anime);
-    }
-
+export const AnimeList = ({ animelist, setAnimeInfo }) => {
+  
     return (
-        <>
-        {
-            animelist ?(
-                animelist.map((anime,index)=>{
-                    return(
-                <div key={anime.mal_id} className="card" onClick={()=>handleClick(anime)}>
-                    <img src={anime.images.webp.image_url}/>
-                    <div className="anime-info">
-                    <h4>{anime.title}</h4>
-                    </div>
+      <>
+        {animelist ? (
+          animelist.map((anime) => {
+            return (
+              <div key={anime.mal_id} className="card" onClick={() => setAnimeInfo(anime)}>
+                <img src={anime.images.webp.image_url} alt={anime.title} />
+                <div className="card-text">
+                  <h3>{anime.title}</h3>
                 </div>
-                    )
-                })
-            ):"Not Found"
-        }  
-        {selectedAnime && <AnimeInfo animeInfo={selectedAnime} />} 
-        </>
-    )
-}
+              </div>
+            );
+          })
+        ) : (
+          <p>No anime found</p>
+        )}
+      </>
+    );
+  };
+  
