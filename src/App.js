@@ -51,7 +51,6 @@ function App() {
 
   const items = animeData ? animeData.map((anime, index) => ({ name: anime.title, id: index })) : [];
 
-  console.log(animeData);
   return (
     <div className="App">
       <header>
